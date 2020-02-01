@@ -8,6 +8,7 @@ abstract class Sweets implements Children//ABSTRACT CLASS BECAUSE OF ABSTRACT ME
 {
     int total;
     int total_weight;
+
     //int distribution[]=new int[Children.totalChildren];
     Sweets(){}
     Sweets(int total,int total_weight)
@@ -16,6 +17,10 @@ abstract class Sweets implements Children//ABSTRACT CLASS BECAUSE OF ABSTRACT ME
         this.total=total;
     }
     abstract void classification(int c[],String n[]);
+    private void getTotal_weight()//ENCAPSULATION CANT ACCESS THIS METHOD OUTSIDE THIS AND CHILD CLASS
+    {
+        System.out.println(total_weight);
+    }
 }
 class Chocolates extends Sweets//IMHERITANCE
 {
