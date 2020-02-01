@@ -1,10 +1,10 @@
 import java.util.*;
-interface Children
+interface Children//INTERFACE
 {
     static int totalChildren=10;
     String name[]=new String[totalChildren];
 }
-abstract class Sweets implements Children
+abstract class Sweets implements Children//ABSTRACT CLASS BECAUSE OF ABSTRACT METHOD
 {
     int total;
     int total_weight;
@@ -17,12 +17,13 @@ abstract class Sweets implements Children
     }
     abstract void classification(int c[],String n[]);
 }
-class Chocolates extends Sweets
+class Chocolates extends Sweets//IMHERITANCE
 {
     int total_chocolates;
     int total_weight;
     int d_chocolates[]=new int[Children.totalChildren];
     String nameChildren[]=new String[Children.totalChildren];
+    private int max;//ENCAPSULATION
     Chocolates(int total,int total_weight,int total_chocolates_weight)
     {
         super(total,total_weight);
@@ -42,18 +43,29 @@ class Chocolates extends Sweets
          total_chocolates+=d_chocolates[i];
      return total_chocolates;
  }
+ int getMax()
+ {
+      max=d_chocolates[0];
+     for (int i=1;i<d_chocolates.length;i++)
+     {
+         if(d_chocolates[i]>max)
+             max=d_chocolates[i];
+     }
+     return max;
+ }
  void print()
  {
      System.out.println("Chocolates");
      System.out.println("Total weight="+total_weight);
      System.out.println("Total Chocolates="+getTotal_chocolates());
+     System.out.println("Max chocolates="+getMax());
      System.out.println("Classification:");
      for (int i=0;i<d_chocolates.length;i++)
      {
          System.out.println(nameChildren[i]+" got "+d_chocolates[i]);
      }
  }
-    void print(char s)
+    void print(char s)//POLYMORPHISM
     {
         for(int i=0;i<d_chocolates.length;i++)
         {
@@ -81,6 +93,7 @@ class Chocolates extends Sweets
         int total_weight;
         int d_candies[] = new int[Children.totalChildren];
         String nameChildren[] = new String[Children.totalChildren];
+        private int max;
         Candy(int total,int total_weight,int total_candies_weight)
         {
             super(total,total_weight);
@@ -92,6 +105,17 @@ class Chocolates extends Sweets
                 nameChildren[i] = name[i];
             }
         }
+
+        public int getMax() {
+             max=d_candies[0];
+             for (int i=1;i<d_candies.length;i++)
+             {
+                 if(max< d_candies[i])
+                     max=d_candies[i];
+             }
+             return max;
+        }
+
         int getTotal_candies()
         {
             for (int i=0;i<d_candies.length;i++)
@@ -102,6 +126,7 @@ class Chocolates extends Sweets
             System.out.println("Candiess");
             System.out.println("Total weight="+total_weight);
             System.out.println("Total Candies="+getTotal_candies());
+            System.out.println("Maximum candies"+getMax());
             System.out.println("Classification:");
             for (int i = 0; i < d_candies.length; i++) {
                 System.out.println(nameChildren[i] + " got " + d_candies[i]);
